@@ -1,0 +1,26 @@
+logging:
+  level:
+    root: debug
+
+spring:
+  application:
+    name: backend
+
+  datasource:
+    url: jdbc:postgresql://database:5432/${DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 5
+      idleTimeout: 100000
+      maxLifetime: 50000
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:migrations/*.sql
+
+server:
+  port: 8080
